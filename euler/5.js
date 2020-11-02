@@ -1,27 +1,25 @@
 "use strict"
 
-let num = 20;
+alert(calcEvenlyDivisible(20));
 
-while (true) {
-    if (isDividable(num)) {
-        alert(num);
-        break;
+function calcEvenlyDivisible(maxN) {
+    let num = maxN;
+
+    while (true) {
+        if (isDividable(num, maxN)) {
+            return num;
+        }
+        num += maxN;
     }
-    num += 20;
 }
 
-function isDividable(num) {
-    if (num % 11 == 0
-        && num % 12 == 0
-        && num % 13 == 0
-        && num % 14 == 0
-        && num % 15 == 0
-        && num % 16 == 0
-        && num % 17 == 0
-        && num % 18 == 0
-        && num % 19 == 0
-        ) {
-            return true;
+function isDividable(num, maxN) {
+    let check = true;
+    for (let i = 1; i <= maxN; i++) {
+        if (num % i != 0) {
+            check = false;
+            break;
         }
-    return false;
+    }
+    return check;
 }
